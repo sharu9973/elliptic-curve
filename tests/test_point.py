@@ -24,6 +24,8 @@ class TestPoint1:
         assert 2 * p == p + p
         assert p * 2 == p + p
         assert 10 * p == p + p + p + p + p + p + p + p + p + p
+        assert p - p == PointOverEC(self.curve, 0, 0, True)
+        assert -p == PointOverEC(self.curve, Fp(0, self.prime), Fp(6, self.prime))
 
         # q = (2, 3)
         q = PointOverEC(self.curve, Fp(2, self.prime), Fp(3, self.prime))

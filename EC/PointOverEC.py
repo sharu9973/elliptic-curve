@@ -70,6 +70,9 @@ class PointOverEC:
         y3 = -lmd * x3 - self.y + lmd * self.x
         return self.__class__(self.curve, x=x3, y=y3)
 
+    def __sub__(self, other: Self):
+        return self + -other
+
     def __mul__(self, n: int):
         """return [n]P = P + ... + P (n-times)."""
         if isinstance(n, int):
@@ -85,6 +88,9 @@ class PointOverEC:
         )
 
     __rmul__ = __mul__
+
+    def __neg__(self):
+        return self.__class__(self.curve, x=self.x, y=-self.y)
 
     def __str__(self) -> str:
         if self.is_point_at_infinity:
